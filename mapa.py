@@ -6,7 +6,7 @@ from matplotlib import interactive
 interactive(True)
 
 
-""" def receive():
+def receive():
     UDP_IP = "127.0.0.1"
     UDP_PORT = 5005
 
@@ -16,19 +16,24 @@ interactive(True)
 
     while True:
         data, addr = sock.recvfrom(1024) # buffer size is 1024 bytes
-        print "received message:", data """
+        exibe(data)
+        print "received message:", data 
+
+def exibe(data):
+    
+
+def plot_map(): 
+    plt.plot(4.5, 0, color='grey')
+    plt.plot(5.5, 0, color='grey')
+    plt.plot(0, 4.5, color='grey')     
+    plt.plot(0, 5.5, color='grey')
 
 
-""" def plot_map(): """
-plt.plot(4.5, 0, color='grey')
-plt.plot(5.5, 0, color='grey')
-plt.plot(0, 4.5, color='grey')     
-plt.plot(0, 5.5, color='grey')
     
 
 #plot_map()
 
-""" threads = []
+threads = []
 
 for i in range(10):
     t = threading.Thread(target=receive)
@@ -36,4 +41,4 @@ for i in range(10):
     threads.append(t)
     
 for thread in threads:
-    thread.join() """
+    thread.join() 
