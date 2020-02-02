@@ -8,7 +8,7 @@ global pos_y = 0
 def send_pos():
     UDP_IP = "127.0.0.1"
     UDP_PORT = 5005
-    MESSAGE = pos_x + ' ' + pos_y
+    MESSAGE = "Carrinho1" + pos_x + '/' + pos_y
 
     print "UDP target IP:", UDP_IP
     print "UDP target port:", UDP_PORT
