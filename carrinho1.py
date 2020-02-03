@@ -2,14 +2,16 @@ import socket
 from threading import Thread
 import os
 
-global pos_x = 0
-global pos_y = 0
+global pos_x = -50
+global pos_y = -2.5
+global size_x = 5.5
+global size_y = 1.5
+
 
 def send_pos():
     UDP_IP = "127.0.0.1"
     UDP_PORT = 5005
-    MESSAGE = "Carrinho1" + pos_x + '/' + pos_y
-
+    MESSAGE = "Carrinho1/" + pos_x + '/' + pos_y + '/' + size_x + '/' + size_y
     print "UDP target IP:", UDP_IP
     print "UDP target port:", UDP_PORT
     print "message:", MESSAGE
@@ -17,6 +19,12 @@ def send_pos():
     sock = socket.socket(socket.AF_INET, # Internet
                         socket.SOCK_DGRAM) # UDP
     sock.sendto(MESSAGE, (UDP_IP, UDP_PORT))
+
+def invertexy():
+    x = size_x
+    y = size_y
+    size_x = y
+    size_y = x
 
 def send(message):
     UDP_IP = "127.0.0.1"
@@ -48,9 +56,11 @@ def walk_x():
     if pos_x == -5 :
         for i in range(-5, 0, 0.5)
             pos_x = i
+            send_pos()
     else if pos_x == 5:
         for i in range(5, 0, -0.5)
             pos_x = i
+            send_pos()
     else:
         print("posição inválida")
         spawn_1()   
@@ -60,19 +70,26 @@ def walk_y():
     if pos_y == -5 :
         for i in range(-5, 0, 0.5)
             pos_y = i
+            send_pos()
     else if pos_y == 5:
         for i in range(5, 0, -0.5)
             pos_y = i
+            send_pos()
     else:
         print("posição inválida")
         spawn_1()   
-
 
 def spawn_1():
     #Função que faz o carro apararecer no mapa
     global pos_x = -5
     global pos_y = -0.5
     
+def opt1()
+
+def opt2()
+
+def opt3()
+
 
 threads = []
 

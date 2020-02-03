@@ -7,32 +7,84 @@ from vpython import *
 
 
 
+#Criando um mapa
+#Via H
+box(pos=vector(0, 0, 0),
+    size=vector(110, 10, 0), 
+    color = color.gray(2))
 
-box(pos=vector(-50,-3.5,0),
+#Via V
+box(pos=vector(0, 0, 0),
+    size=vector(10, 110, 0), 
+    color = color.gray(2))
+
+#Faixas H
+box(pos=vector(0, 0, 0),
+    size=vector(1, 110, 0), 
+    color = color.yellow)
+
+#Faixas V
+box(pos=vector(0, 0, 0),
+    size=vector(110, 1, 0), 
+    color = color.yellow)
+
+#Jardins
+box(pos=vector(30, 30, 0),
+    size=vector(50, 50, 0), 
+    color = color.green)
+box(pos=vector(-30, 30, 0),
+    size=vector(50, 50, 0), 
+    color = color.green)
+box(pos=vector(30, -30, 0),
+    size=vector(50, 50, 0), 
+    color = color.green)
+box(pos=vector(-30, -30, 0),
+    size=vector(50, 50, 0), 
+    color = color.green)
+
+
+def carro1(pos_x, pos_y, size_x, size_y):
+#Carrinho 1
+#inicial -50, -2.5
+#size 5.5, 1.5
+box(pos=vector(pos_x,pos_y,0),
+        size=vector(size_x,size_y,1.6),
+        color=color.red)
+
+def carro2(pos_x, pos_y):
+#Carrinho 2
+#inicial 50, 2.5
+box(pos=vector(pos_x,pos_y,0),
         size=vector(5.5,1.5,1.6),
         color=color.red)
 
-box(pos=vector(0, 0, 0),
-    size=vector(100, 10, 0), 
-    color = color.gray(2))
-
-box(pos=vector(0, 0, 0),
-    size=vector(10, 100, 0), 
-    color = color.gray(2))
-
-box(pos=vector(25, 25, 0),
-    size=vector(45, 50, 0), 
-    color = color.green)
-
-#box(pos=vector(0, 50, 0),
- #   size=vector(50, 50, 0), 
-  #  color = color.green)
-
-def carro():
-    box(pos=(-500, -50, 0),
-        size=(15.5,7.6,6.6),
+def carro3(pos_x, pos_y):
+#Carrinho 3
+#inicial 2.5,-50
+box(pos=vector(pos_x,pos_y,0),
+        size=vector(1.5,5.5,1.6),
         color=color.red)
 
+def carro4(pos_x, pos_y):
+#Carrinho 4
+#inicial -2.5, 50
+box(pos=vector(pos_x,pos_y,0),
+        size=vector(1.5,5.5,1.6),
+        color=color.red)
+
+
+
+
+
+def exibe(data):
+    message = data.split("/")
+    
+    carro = message[0]
+    pos_x = message[1] 
+    pos_y = message[2]
+
+
+ 
 
 
 def receive():
@@ -48,22 +100,6 @@ def receive():
         exibe(data)
         print("received message:", data) 
 
-def exibe(data):
-    message = data.split("/")
-    
-    carro = message[0]
-    pos_x = message[1] 
-    pos_y = message[2]
-
-    plt.scatter(pos_x, pos_y, s=10, color='yellow')
-    plt.text(pos_x+0.3, pos_y, carro, fontsize=9)
-
-def plot_map(): 
-    plt.plot(4.5, 0, color='grey')
-    plt.plot(5.5, 0, color='grey')
-    plt.plot(0, 4.5, color='grey')     
-    plt.plot(0, 5.5, color='grey')
- 
 
 threads = []
 
