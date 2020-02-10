@@ -43,6 +43,63 @@ box(pos=vector(-30, -30, 0),
     color = color.green)
 
 
+from vpython import *
+
+
+
+#Criando um mapa
+#Via H
+box(pos=vector(0, 0, 0),
+    size=vector(110, 10, 0), 
+    color = color.gray(2))
+
+#Via V
+box(pos=vector(0, 0, 0),
+    size=vector(10, 110, 0), 
+    color = color.gray(2))
+
+#Faixas H
+box(pos=vector(0, 0, 0),
+    size=vector(1, 110, 0), 
+    color = color.yellow)
+
+#Faixas V
+box(pos=vector(0, 0, 0),
+    size=vector(110, 1, 0), 
+    color = color.yellow)
+
+#Jardins
+box(pos=vector(30, 30, 0),
+    size=vector(50, 50, 0), 
+    color = color.green)
+box(pos=vector(-30, 30, 0),
+    size=vector(50, 50, 0), 
+    color = color.green)
+box(pos=vector(30, -30, 0),
+    size=vector(50, 50, 0), 
+    color = color.green)
+box(pos=vector(-30, -30, 0),
+    size=vector(50, 50, 0), 
+    color = color.green)
+
+
+carro1 = box(pos=vector(-50,2.5,0),
+             size=vector(5.5,1.5,1.6),
+             color=color.red)
+             
+carro2 = box(pos=vector(50,-2.5,0),
+             size=vector(5.5,1.5,1.6),
+             color=color.yellow)
+             
+carro3 = box(pos=vector(-2.5,50,0),
+             size=vector(1.5,5.5,1.6),
+             color=color.blue)  
+             
+carro4 = box(pos=vector(2.5,-50,0),
+             size=vector(1.5,5.5,1.6),
+             color=color.black)
+          
+
 def carro1(pos_x, pos_y, size_x, size_y):
 #Carrinho 1
 #inicial -50, -2.5

@@ -1,5 +1,6 @@
 import socket
 from threading import Thread
+import random
 import os
 
 global pos_x = -50
@@ -53,13 +54,17 @@ def receive():
         
 def walk_x():
     #deslocar em posição x
-    if pos_x == -5 :
-        for i in range(-5, 0, 0.5)
+    if pos_x == -50:
+        for i in range(-50, 0, 1)
             pos_x = i
+            if i == -5:
+                send("chegando")
             send_pos()
-    else if pos_x == 5:
-        for i in range(5, 0, -0.5)
+    else if pos_x == 50:
+        for i in range(50, 0, -1)
             pos_x = i
+            if i == -5:
+                send("chegando")
             send_pos()
     else:
         print("posição inválida")
@@ -67,36 +72,68 @@ def walk_x():
 
 def walk_y():
     #deslocar em posição y
-    if pos_y == -5 :
-        for i in range(-5, 0, 0.5)
+    if pos_y == -50 :
+        for i in range(-50, 0, 1)
             pos_y = i
+            if i == -5:
+                send("chegando")
             send_pos()
-    else if pos_y == 5:
-        for i in range(5, 0, -0.5)
+    else if pos_y == 50:
+        for i in range(50, 0, -1)
             pos_y = i
+            if i == -5:
+                send("chegando")
             send_pos()
     else:
         print("posição inválida")
         spawn_1()   
 
+def terminaTrajeto():
+    
+
 def spawn_1():
     #Função que faz o carro apararecer no mapa
-    global pos_x = -5
-    global pos_y = -0.5
+    global pos_x = -50
+    global pos_y = -2.5
+    send("Apareci")
     
 def opt1()
+    #segue reto
+    
 
 def opt2()
+    #vira a direita
 
 def opt3()
+    #vira a esquerda
 
+options = [1,2,3]
 
-threads = []
-
-for i in range(10):
-    t = threading.Thread(target=receive)
-    t.start()
-    threads.append(t)
+try:
+    spawn_1()
+    walk_x()
+    opt = random.choice(options)
+    send("Cheguei")
     
-for thread in threads:
-    thread.join()
+    if opt == 1:
+        opt1()
+                
+    elif opt == 2:
+        opt2()
+        
+    elif opt == 3:
+        opt3()
+    
+    terminaTrajeto()
+    
+        
+
+    threads = []
+
+    for i in range(10):
+        t = threading.Thread(target=receive)
+        t.start()
+        threads.append(t)
+        
+    for thread in threads:
+        thread.join()
