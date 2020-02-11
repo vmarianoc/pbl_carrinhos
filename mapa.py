@@ -50,11 +50,11 @@ carro2 = box(pos=vector(50,-2.5,0),
              size=vector(5.5,1.5,1.6),
              color=color.yellow)
              
-carro3 = box(pos=vector(-2.5,50,0),
+carro3 = box(pos=vector(2.5,50,0),
              size=vector(1.5,5.5,1.6),
              color=color.blue)  
              
-carro4 = box(pos=vector(2.5,-50,0),
+carro4 = box(pos=vector(-2.5,-50,0),
              size=vector(1.5,5.5,1.6),
              color=color.black)
           

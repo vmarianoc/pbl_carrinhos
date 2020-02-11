@@ -3,19 +3,18 @@ from threading import Thread
 import random
 import os
 
-id = 1
-global pos_x = -50.0
+global id = 2
+global pos_x = 50.0
 global pos_y = -2.5
 global size_x = 5.5
 global size_y = 1.5
 
 fila = []
 
-
 def send_pos():
     UDP_IP = "127.0.0.255"
     UDP_PORT = 5005
-    MESSAGE = "1/" + pos_x + '/' + pos_y + '/' + size_x + '/' + size_y
+    MESSAGE = "2/" + pos_x + '/' + pos_y + '/' + size_x + '/' + size_y
     print "UDP target IP:", UDP_IP
     print "UDP target port:", UDP_PORT
     print "message:", MESSAGE
@@ -55,7 +54,7 @@ def receive():
         data, addr = sock.recvfrom(1024) # buffer size is 1024 bytes
         checaMensagem(data)
         print "received message:", data
-        
+
 def checaMensagem(data):
     #Verifica o conteudo da mensagem recebida
     message = data.split("/")
@@ -63,7 +62,7 @@ def checaMensagem(data):
         fila.append(message[0])
     if data[1] == "Acabei"
         fila.remove(message[0])
-
+        
 def walk_x():
     #deslocar em posição x
     if pos_x == -50:
@@ -101,9 +100,9 @@ def walk_y():
         spawn_1()   
 
 
-def spawn_1():
+def spawn_2():
     #Função que faz o carro apararecer no mapa
-    global pos_x = -50.0
+    global pos_x = 50.0
     global pos_y = -2.5
     global size_x = 5.5
     global size_y = 1.5
@@ -114,7 +113,6 @@ def opt1()
     for i in range(-5, 50, 1)
         pos_x = i
         send_pos()
-    send("1/Acabei")
     
 
 def opt2()
@@ -126,18 +124,16 @@ def opt2()
     for i in range(2.5, 50, 1)
         pos_y = i
         send_pos()
-    send("1/Acabei")
 
 def opt3()
     #vira a esquerda
-    for i in range(-5, -2.5, 1)
+    for i in range(5, 2.5, -1)
         pos_x = i
         send_pos()
     invertexy()
     for i in range(2.5, -50, -1)
         pos_y = i
         send_pos()
-    send("1/Acabei")
 
 def checaCondicao():
     #Verifica se ha outro carro no cruzamento
@@ -145,20 +141,22 @@ def checaCondicao():
     #Atravessa
     if fila.size == 0:
         return True
-    elif fila[0] == "1":
+    elif fila[0] == "2":
         return True
     else
         return False
 
+
+
 options = [1,2,3]
 
 try:
-    spawn_1()
+    spawn_2()
     walk_x()
     opt = random.choice(options)
-    send("1\Cheguei")
+    send("Cheguei")
 
-#    while(checaCondicao):    
+    if(checaCondicao):    
         if opt == 1:
             opt1()
                     
